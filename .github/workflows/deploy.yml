@@ -24,7 +24,7 @@ jobs:
         run: npm install --no-audit --no-fund
 
       - name: Inject Adsense snippet (optional)
-        if: ${{ secrets.REACT_APP_ADSENSE_ID != '' }}
+        if: ${{ env.REACT_APP_ADSENSE_ID != '' }}
         env:
           REACT_APP_ADSENSE_ID: ${{ secrets.REACT_APP_ADSENSE_ID }}
         run: |
