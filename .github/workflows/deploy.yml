@@ -24,6 +24,8 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          REACT_APP_ADSENSE_ID: ${{ secrets.REACT_APP_ADSENSE_ID }}
 
       - name: Copy CNAME
         run: |
