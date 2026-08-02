@@ -61,9 +61,28 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/m
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+### Deployment & publishing (GitHub Pages)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+This repository includes an automated GitHub Actions workflow that builds the app and publishes it to GitHub Pages whenever changes are pushed or merged into the `main` branch.
+
+Quick summary
+- Workflow: `.github/workflows/deploy.yml` builds the project (`npm run build`) and publishes the `build/` directory to the `gh-pages` branch using `peaceiris/actions-gh-pages`.
+- Custom domain: the repository's `CNAME` file (already present) will be copied into `build/` during the workflow so the published site uses the configured domain (for example `bharwaliya.com`).
+- Trigger: push/merge to `main`.
+
+How to publish from local machine (sanity check)
+1. Build locally: `npm run build`.
+2. Serve locally to verify: `npx serve build` or `python -m http.server 8000 --directory build`.
+
+Where to find more details
+- Full automated deployment instructions and troubleshooting are in `docs/DEPLOYMENT.md`.
+
+Adsense and affiliate setup
+- Ad placeholders live in `src/components/Adsense/AdsensePlaceholder.js`.
+- See `docs/ADSENSE.md` for guidance on configuring Adsense via environment variables.
+
+Next steps
+- Replace placeholders with real ad code and affiliate links. Keep secrets out of source control and provide them to Actions as repository secrets when building in CI.
 
 ### `npm run build` fails to minify
 

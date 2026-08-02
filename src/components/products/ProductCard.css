@@ -1,0 +1,6 @@
+.product-card{display:flex;border:1px solid #e6e6e6;border-radius:6px;padding:12px;margin:12px 0;background:#fff;color:#222}
+.product-img{width:150px;height:120px;object-fit:cover;border-radius:4px;margin-right:12px}
+.product-info h3{margin:0 0 6px 0}
+.price{font-weight:600;color:#0b6}
+.desc{font-size:0.95rem;color:#555}
+.visit-link{display:inline-block;margin-top:8px;background:#0a63a9;color:white;padding:6px 10px;border-radius:4px;text-decoration:none}
