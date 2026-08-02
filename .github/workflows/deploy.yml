@@ -22,6 +22,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Inject Adsense snippet (optional)
+        if: env.REACT_APP_ADSENSE_ID != ''
+        run: |
+          echo "Injecting Adsense ID into public/index.html"
+          # Create a script tag with the publisher id and replace the placeholder
+          ADSENSE_SNIPPET="<script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${REACT_APP_ADSENSE_ID}\" crossorigin=\"anonymous\"></script>\n<script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>"
+          # Use perl to safely do an in-file replace
+          perl -0777 -pe "s/<!-- ADSENSE_SNIPPET_PLACEHOLDER -->.*?<!-- End ADSENSE_SNIPPET_PLACEHOLDER -->/${ADSENSE_SNIPPET}/s" -i public/index.html
+        env:
+          REACT_APP_ADSENSE_ID: ${{ secrets.REACT_APP_ADSENSE_ID }}
+
       - name: Build
         run: npm run build
         env:
