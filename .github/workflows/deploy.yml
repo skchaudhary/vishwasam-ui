@@ -24,15 +24,21 @@ jobs:
         run: npm install --no-audit --no-fund
 
       - name: Inject Adsense snippet (optional)
-        if: env.REACT_APP_ADSENSE_ID != ''
-        run: |
-          echo "Injecting Adsense ID into public/index.html"
-          # Create a script tag with the publisher id and replace the placeholder
-          ADSENSE_SNIPPET="<script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${REACT_APP_ADSENSE_ID}\" crossorigin=\"anonymous\"></script>\n<script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>"
-          # Use perl to safely do an in-file replace
-          perl -0777 -pe "s/<!-- ADSENSE_SNIPPET_PLACEHOLDER -->.*?<!-- End ADSENSE_SNIPPET_PLACEHOLDER -->/${ADSENSE_SNIPPET}/s" -i public/index.html
+        if: ${{ secrets.REACT_APP_ADSENSE_ID != '' }}
         env:
           REACT_APP_ADSENSE_ID: ${{ secrets.REACT_APP_ADSENSE_ID }}
+        run: |
+          echo "Injecting Adsense ID into public/index.html"
+
+          ADSENSE_SNIPPET=$(cat <<EOF
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${REACT_APP_ADSENSE_ID}" crossorigin="anonymous"></script>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          EOF
+          )
+
+          export ADSENSE_SNIPPET
+
+          perl -0777 -i -pe 'BEGIN { $s = $ENV{"ADSENSE_SNIPPET"} // "" } s/<!-- ADSENSE_SNIPPET_PLACEHOLDER -->.*?<!-- End ADSENSE_SNIPPET_PLACEHOLDER -->/$s/si' public/index.html
 
       - name: Build
         run: npm run build
