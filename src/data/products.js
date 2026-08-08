@@ -1,43 +1,68 @@
 const products = [
   {
     id: 'p1',
-    title: 'Stainless Steel Cookware Set',
+    title: 'Extendable Kitchen Drawer Organizer',
     category: 'Home & Kitchen',
-    price: '₹3,499',
-    description: 'Durable 10-piece stainless steel cookware set. Suitable for gas, electric and induction stoves.',
-    image: '/images/cookware.jpg',
-    source: 'own',
-    url: '/products/p1'
+    price: '₹1,500',
+    description: 'Premium extendable drawer organizer for cutlery, spoons, and utensils. Keeps your kitchen tidy.',
+    image: '/images/organizer-1.jpg',
+    source: 'affiliate',
+    affiliateUrl: 'https://www.amazon.in/s?k=extendable+drawer+organizer',
+    featured: true
   },
   {
     id: 'p2',
-    title: 'Non-stick Frying Pan (28cm)',
+    title: 'Multi-Compartment Cutlery Tray',
     category: 'Home & Kitchen',
-    price: '₹899',
-    description: 'Easy-release non-stick surface. Ideal for everyday cooking.',
-    image: '/images/frying-pan.jpg',
+    price: '₹1,200',
+    description: 'Durable multi-compartment tray perfect for spoons, forks, knives, and kitchen gadgets.',
+    image: '/images/organizer-2.jpg',
     source: 'affiliate',
-    affiliateUrl: 'https://www.amazon.in/s?k=non+stick+frying+pan'
+    affiliateUrl: 'https://www.flipkart.com/search?q=cutlery+tray',
+    featured: true
   },
   {
     id: 'p3',
-    title: 'Ceramic Dinner Set - 12 pcs',
+    title: 'Adjustable Kitchen Utensil Holder',
     category: 'Home & Kitchen',
-    price: '₹2,199',
-    description: 'Elegant ceramic dinner set with dishwasher-safe finish.',
-    image: '/images/dinner-set.jpg',
+    price: '₹999',
+    description: 'Maximize your drawer space with this adjustable utensil holder.',
+    image: '/images/organizer-3.jpg',
     source: 'affiliate',
-    affiliateUrl: 'https://www.flipkart.com/search?q=ceramic+dinner+set'
+    affiliateUrl: 'https://www.amazon.in/s?k=adjustable+utensil+holder',
+    featured: true
   },
   {
     id: 'p4',
-    title: 'Hand Blender - 500W',
+    title: '2-Tier Slide-Out Cabinet Organizer',
     category: 'Home & Kitchen',
+    price: '₹2,500',
+    description: 'Heavy-duty 2-tier organizer for under-sink or cabinet storage. Easy access to your items.',
+    image: '/images/organizer-4.jpg',
+    source: 'affiliate',
+    affiliateUrl: 'https://www.flipkart.com/search?q=slide+out+cabinet+organizer',
+    featured: true
+  },
+  {
+    id: 'p5',
+    title: 'Compact Cutlery Drawer Organizer',
+    category: 'Home & Kitchen',
+    price: '₹850',
+    description: 'Space-saving design for small drawers. Neatly stacks your cutlery.',
+    image: '/images/organizer-5.jpg',
+    source: 'affiliate',
+    affiliateUrl: 'https://www.amazon.in/s?k=compact+cutlery+organizer',
+    featured: true
+  },
+  {
+    id: 'p6',
+    title: 'Hand Blender - 500W',
+    category: 'Electronics',
     price: '₹1,299',
     description: 'Powerful hand blender with multiple speed settings.',
     image: '/images/hand-blender.jpg',
     source: 'own',
-    url: '/products/p4'
+    url: '/products/p6'
   }
 ];
 

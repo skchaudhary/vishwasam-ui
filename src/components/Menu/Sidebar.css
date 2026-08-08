@@ -1,0 +1,136 @@
+.Sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 2rem 0;
+  width: 250px;
+  transition: width 0.3s ease;
+}
+
+.Sidebar.collapsed {
+  width: 80px;
+}
+
+.Sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  margin-bottom: 3rem;
+}
+
+.Sidebar-brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  overflow: visible;
+}
+
+.logo-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: width 0.3s ease, height 0.3s ease;
+  animation: pulse 3s infinite ease-in-out;
+  box-shadow: var(--shadow-sm);
+  background-color: white;
+  /* In case the logo has transparency */
+}
+
+.Sidebar.collapsed .logo-image {
+  width: 50px;
+  height: 50px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.Sidebar-toggle {
+  background: none;
+  border: none;
+  color: var(--sidebar-text);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Sidebar-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.Sidebar.collapsed .Sidebar-header {
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0 0.5rem;
+}
+
+.Sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0 1rem;
+}
+
+.Sidebar.collapsed .Sidebar-nav {
+  padding: 0 0.5rem;
+  align-items: center;
+}
+
+.Sidebar-link {
+  padding: 1rem 1rem;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--sidebar-text);
+  transition: var(--transition);
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.Sidebar.collapsed .Sidebar-link {
+  padding: 1rem;
+  justify-content: center;
+}
+
+.Sidebar-link .icon {
+  font-size: 1.25rem;
+  min-width: 24px;
+  text-align: center;
+}
+
+.Sidebar.collapsed .Sidebar-link .text {
+  display: none;
+}
+
+.Sidebar-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  opacity: 1;
+}
+
+.Sidebar-link.active {
+  background-color: var(--primary-color);
+  color: #fff;
+  opacity: 1;
+}
