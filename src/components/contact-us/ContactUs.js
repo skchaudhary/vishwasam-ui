@@ -10,17 +10,45 @@ function ContactUs() {
     subject: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mqpzegwv';
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const mailtoLink = `mailto:seema.devi@bharwaliya.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
-      `Name: ${formData.name}\nPhone: ${formData.phone}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    )}`;
-    window.location.href = mailtoLink;
+    setErrorMessage('');
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || 'Unable to send your message.');
+      }
+
+      setIsSuccess(true);
+      setFormData({ name: '', phone: '', email: '', subject: '', message: '' });
+
+      setTimeout(() => setIsSuccess(false), 5000);
+    } catch (error) {
+      setErrorMessage(error.message || 'Failed to send message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -29,6 +57,18 @@ function ContactUs() {
         <h2>Contact Us</h2>
         <p>We'd love to hear from you. Please fill out the form below.</p>
       </div>
+
+      {isSuccess && (
+        <div className="Success-message">
+          ✅ Thank you! Your message has been sent successfully. We will get back to you soon.
+        </div>
+      )}
+
+      {errorMessage && (
+        <div className="Error-message">
+          ⚠️ {errorMessage}
+        </div>
+      )}
 
       <form className="Contact-form" onSubmit={handleSubmit}>
         <div className="Form-group">
@@ -56,7 +96,9 @@ function ContactUs() {
           <textarea id="message" name="message" placeholder="How can we help you?" required onChange={handleChange} value={formData.message}></textarea>
         </div>
 
-        <button type="submit" className="Submit-btn">Send Message</button>
+        <button type="submit" className="Submit-btn" disabled={isSubmitting}>
+          {isSubmitting ? 'Sending...' : 'Send Message'}
+        </button>
       </form>
 
       <AdsensePlaceholder position="contact-bottom" />
