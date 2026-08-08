@@ -52,6 +52,13 @@
     height: auto;
     position: relative;
   }
+
+  /* Stack sidebar and main vertically on small screens so content
+     doesn't get pushed off-screen to the right. */
+  .App-content {
+    flex-direction: column;
+  }
+
   .App-main {
     padding: 1rem;
   }
