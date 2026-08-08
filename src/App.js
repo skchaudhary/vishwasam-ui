@@ -12,21 +12,27 @@ import ContactUs from './components/contact-us/ContactUs';
 function App() {
   return (
     <div className="App">
-      <aside className="App-sidebar">
-        <Sidebar />
-      </aside>
+      <div className="App-content">
+        <aside className="App-sidebar">
+          <Sidebar />
+        </aside>
 
-      <main className="App-main">
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/products' element={<ProductsPage />} />
-          <Route path='/products/:id' element={<ProductDetail />} />
-          <Route path='/services' element={<Services />} />
-          <Route path='/news' element={<News />} />
-          <Route path='/about-us' element={<About />} />
-          <Route path='/contact-us' element={<ContactUs />} />
-        </Routes>
-      </main>
+        <main className="App-main">
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/products' element={<ProductsPage />} />
+            <Route path='/products/:id' element={<ProductDetail />} />
+            <Route path='/services' element={<Services />} />
+            <Route path='/news' element={<News />} />
+            <Route path='/about-us' element={<About />} />
+            <Route path='/contact-us' element={<ContactUs />} />
+          </Routes>
+        </main>
+      </div>
+
+      <footer className="App-footer">
+        © Bharwaliya.com, or its affiliates
+      </footer>
     </div>
   );
 }

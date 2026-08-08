@@ -82,3 +82,32 @@
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
+
+@media (max-width: 768px) {
+  .ContactUs {
+    margin: 1rem;
+    gap: 1.5rem;
+  }
+
+  .Contact-header h2 {
+    font-size: 2rem;
+  }
+
+  .Contact-header p {
+    font-size: 1rem;
+  }
+
+  .Contact-form {
+    padding: 1.5rem;
+  }
+
+  .Form-group input,
+  .Form-group textarea {
+    font-size: 0.95rem;
+  }
+
+  .Submit-btn {
+    font-size: 1rem;
+    padding: 0.9rem;
+  }
+}

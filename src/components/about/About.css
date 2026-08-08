@@ -36,6 +36,23 @@
   .About-content {
     grid-template-columns: 1fr;
   }
+
+  .About-header {
+    padding: 2rem 1.25rem;
+  }
+
+  .About-header h2 {
+    font-size: 2rem;
+  }
+
+  .About-header p {
+    font-size: 1rem;
+  }
+
+  .Profile-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .About-card {

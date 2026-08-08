@@ -1,22 +1,42 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Sidebar.css';
 import { NavLink } from 'react-router-dom';
 
 function Sidebar() {
     const [isCollapsed, setIsCollapsed] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            const mobile = window.innerWidth <= 768;
+            setIsMobile(mobile);
+            if (!mobile) {
+                setIsMobileMenuOpen(false);
+            }
+        };
+
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const toggleSidebar = () => {
-        setIsCollapsed(!isCollapsed);
+        if (isMobile) {
+            setIsMobileMenuOpen((prev) => !prev);
+        } else {
+            setIsCollapsed((prev) => !prev);
+        }
     };
 
     return (
-        <div className={`Sidebar ${isCollapsed ? 'collapsed' : ''}`}>
+        <div className={`Sidebar ${isCollapsed ? 'collapsed' : ''} ${isMobile && isMobileMenuOpen ? 'mobile-open' : ''}`}>
             <div className="Sidebar-header">
                 <div className="Sidebar-brand">
                     <img src="/images/logo.png" alt="Bharwaliya Logo" className="logo-image" />
                 </div>
                 <button className="Sidebar-toggle" onClick={toggleSidebar}>
-                    {isCollapsed ? '»' : '«'}
+                    {isMobile ? (isMobileMenuOpen ? '✕' : '☰') : isCollapsed ? '»' : '«'}
                 </button>
             </div>
             <nav className="Sidebar-nav">
