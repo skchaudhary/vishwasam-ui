@@ -1,7 +1,7 @@
-import React from 'react';
-import './News.css';
-import newsArticles from '../../data/news';
-import AdsensePlaceholder from '../Adsense/AdsensePlaceholder';
+import React from "react";
+import "./News.css";
+import newsArticles from "../../data/news";
+import AdsensePlaceholder from "../Adsense/AdsensePlaceholder";
 
 function News() {
   return (
@@ -14,7 +14,7 @@ function News() {
       <AdsensePlaceholder position="news-top" />
 
       <div className="News-list">
-        {newsArticles.map(article => (
+        {newsArticles.map((article) => (
           <div className="News-card" key={article.id}>
             <h3>{article.title}</h3>
             <div className="News-meta">

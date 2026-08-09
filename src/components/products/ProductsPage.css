@@ -41,7 +41,8 @@
   color: var(--text-main);
 }
 
-.Filter-btn.active, .Filter-btn:hover {
+.Filter-btn.active,
+.Filter-btn:hover {
   background-color: var(--primary-color);
   color: white;
   border-color: var(--primary-color);

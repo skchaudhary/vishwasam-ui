@@ -32,7 +32,9 @@
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  transition: width 0.3s ease, height 0.3s ease;
+  transition:
+    width 0.3s ease,
+    height 0.3s ease;
   animation: pulse 3s infinite ease-in-out;
   box-shadow: var(--shadow-sm);
   background-color: white;

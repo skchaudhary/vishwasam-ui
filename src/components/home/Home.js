@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from 'react';
-import './Home.css';
-import products from '../../data/products';
-import AdsensePlaceholder from '../Adsense/AdsensePlaceholder';
+import React, { useEffect, useRef } from "react";
+import "./Home.css";
+import products from "../../data/products";
+import AdsensePlaceholder from "../Adsense/AdsensePlaceholder";
 
 function Home() {
   const sliderRef = useRef(null);
@@ -16,7 +16,7 @@ function Home() {
     const step = () => {
       if (slider && !isPaused) {
         slider.scrollLeft += scrollStep;
-        if (slider.scrollLeft >= (slider.scrollWidth - slider.clientWidth)) {
+        if (slider.scrollLeft >= slider.scrollWidth - slider.clientWidth) {
           slider.scrollLeft = 0;
         }
       }
@@ -26,40 +26,57 @@ function Home() {
     return () => clearInterval(interval);
   }, [isPaused]);
 
-  const featuredProducts = products.filter(p => p.featured);
+  const featuredProducts = products.filter((p) => p.featured);
 
   return (
     <div className="Home">
       <div className="Hero">
         <h2>Welcome to Bharwaliya</h2>
-        <p>Your one-stop destination for premium home, kitchen, and electronic products. Discover top-rated items curated just for you.</p>
+        <p>
+          Your one-stop destination for premium home, kitchen, and electronic
+          products. Discover top-rated items curated just for you.
+        </p>
       </div>
 
       <AdsensePlaceholder position="home-top" />
 
       <div className="Slider-container">
         <h3>Featured Products</h3>
-        <div 
-          className="Slider" 
+        <div
+          className="Slider"
           ref={sliderRef}
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
           onTouchStart={() => setIsPaused(true)}
           onTouchEnd={() => setIsPaused(false)}
         >
-          {featuredProducts.map(product => (
+          {featuredProducts.map((product) => (
             <div className="Slide-item" key={product.id}>
-              <img src={product.image} alt={product.title} className="Slide-image" />
+              <img
+                src={product.image}
+                alt={product.title}
+                className="Slide-image"
+              />
               <div className="Slide-content">
                 <h4>{product.title}</h4>
                 <p>{product.description}</p>
                 <div className="Slide-price">{product.price}</div>
                 {product.affiliateUrl ? (
-                  <a href={product.affiliateUrl} target="_blank" rel="noopener noreferrer" className="Buy-button">
-                    Buy on {product.affiliateUrl.includes('amazon') ? 'Amazon' : 'Flipkart'}
+                  <a
+                    href={product.affiliateUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="Buy-button"
+                  >
+                    Buy on{" "}
+                    {product.affiliateUrl.includes("amazon")
+                      ? "Amazon"
+                      : "Flipkart"}
                   </a>
                 ) : (
-                  <a href={product.url} className="Buy-button">View Details</a>
+                  <a href={product.url} className="Buy-button">
+                    View Details
+                  </a>
                 )}
               </div>
             </div>

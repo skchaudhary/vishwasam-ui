@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
-import './ProductsPage.css';
-import products from '../../data/products';
-import AdsensePlaceholder from '../Adsense/AdsensePlaceholder';
+import React, { useState } from "react";
+import "./ProductsPage.css";
+import products from "../../data/products";
+import AdsensePlaceholder from "../Adsense/AdsensePlaceholder";
 
 function ProductsPage() {
-  const [filter, setFilter] = useState('All');
+  const [filter, setFilter] = useState("All");
 
-  const categories = ['All', 'Home & Kitchen', 'Electronics'];
+  const categories = ["All", "Home & Kitchen", "Electronics"];
 
-  const filteredProducts = filter === 'All' 
-    ? products 
-    : products.filter(p => p.category === filter);
+  const filteredProducts =
+    filter === "All" ? products : products.filter((p) => p.category === filter);
 
   return (
     <div className="ProductsPage">
@@ -20,10 +19,10 @@ function ProductsPage() {
       </div>
 
       <div className="Category-filters">
-        {categories.map(cat => (
-          <button 
-            key={cat} 
-            className={`Filter-btn ${filter === cat ? 'active' : ''}`}
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            className={`Filter-btn ${filter === cat ? "active" : ""}`}
             onClick={() => setFilter(cat)}
           >
             {cat}
@@ -34,19 +33,33 @@ function ProductsPage() {
       <AdsensePlaceholder position="products-top" />
 
       <div className="Products-grid">
-        {filteredProducts.map(product => (
+        {filteredProducts.map((product) => (
           <div className="Slide-item" key={product.id}>
-            <img src={product.image} alt={product.title} className="Slide-image" />
+            <img
+              src={product.image}
+              alt={product.title}
+              className="Slide-image"
+            />
             <div className="Slide-content">
               <h4>{product.title}</h4>
               <p>{product.description}</p>
               <div className="Slide-price">{product.price}</div>
               {product.affiliateUrl ? (
-                <a href={product.affiliateUrl} target="_blank" rel="noopener noreferrer" className="Buy-button">
-                  Buy on {product.affiliateUrl.includes('amazon') ? 'Amazon' : 'Flipkart'}
+                <a
+                  href={product.affiliateUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="Buy-button"
+                >
+                  Buy on{" "}
+                  {product.affiliateUrl.includes("amazon")
+                    ? "Amazon"
+                    : "Flipkart"}
                 </a>
               ) : (
-                <a href={product.url} className="Buy-button">View Details</a>
+                <a href={product.url} className="Buy-button">
+                  View Details
+                </a>
               )}
             </div>
           </div>
