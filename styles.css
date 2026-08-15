@@ -1,0 +1,8 @@
+/* Minimal styles for Bharwaliya */
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;padding:1rem;color:#111}
+header,footer{max-width:800px;margin:0 auto;padding:1rem}
+main{max-width:800px;margin:0 auto;padding:1rem}
+nav{margin-bottom:0.5rem}
+a{color:#0366d6;text-decoration:none}
+a:hover{text-decoration:underline}
+h1{margin:0 0 .5rem}
