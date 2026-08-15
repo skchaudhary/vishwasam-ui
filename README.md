@@ -2,6 +2,19 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Docs site (GitHub Pages) and AdSense readiness
+
+This repository also contains a minimal static site under `docs/` that can be published via GitHub Pages (serve from `/docs`). Use the `docs/` folder when you need a simple, crawlable site for AdSense verification, or the React build pipeline to publish the full app.
+
+Checklist before requesting AdSense review:
+- Make sure the site is publicly accessible (no maintenance or login requirement).
+- Provide substantive, original content across multiple pages (home, about, articles).
+- Include a reachable privacy policy (`/privacy.html`) and contact information.
+- Ensure `robots.txt` allows crawling and `sitemap.xml` is present.
+- Remove any placeholder/under-construction content and confirm the site returns HTTP 200 for both desktop and mobile user agents.
+
+See the `docs/` folder for a ready-to-publish static site suitable for quick verification.
+
 ## Available Scripts
 
 In the project directory, you can run:
