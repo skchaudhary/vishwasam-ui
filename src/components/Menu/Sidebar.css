@@ -137,6 +137,12 @@
   opacity: 1;
 }
 
+.Sidebar-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  margin: 0.5rem 0;
+}
+
 @media (max-width: 768px) {
   .Sidebar {
     width: 100%;

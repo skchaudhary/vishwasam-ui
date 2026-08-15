@@ -38,9 +38,43 @@
   padding: 1rem 2rem;
   background-color: #f3f4f6;
   color: #6b7280;
-  text-align: center;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   border-top: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.App-footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.App-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+}
+
+.App-footer-links a {
+  color: #6b7280;
+  text-decoration: none;
+  font-size: 0.88rem;
+  transition: color 0.15s;
+}
+
+.App-footer-links a:hover {
+  color: #e65c00;
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .App-footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
 @media (max-width: 768px) {

@@ -29,6 +29,19 @@ function Sidebar() {
     }
   };
 
+  const navLink = (to, icon, label, end = false) => (
+    <NavLink
+      to={to}
+      end={end}
+      className={({ isActive }) =>
+        isActive ? "Sidebar-link active" : "Sidebar-link"
+      }
+    >
+      <span className="icon">{icon}</span>
+      <span className="text">{label}</span>
+    </NavLink>
+  );
+
   return (
     <div
       className={`Sidebar ${isCollapsed ? "collapsed" : ""} ${isMobile && isMobileMenuOpen ? "mobile-open" : ""}`}
@@ -45,62 +58,19 @@ function Sidebar() {
           {isMobile ? (isMobileMenuOpen ? "✕" : "☰") : isCollapsed ? "»" : "«"}
         </button>
       </div>
+
       <nav className="Sidebar-nav">
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
-            isActive ? "Sidebar-link active" : "Sidebar-link"
-          }
-          end
-        >
-          <span className="icon">🏠</span>
-          <span className="text">Home</span>
-        </NavLink>
-        <NavLink
-          to="/products"
-          className={({ isActive }) =>
-            isActive ? "Sidebar-link active" : "Sidebar-link"
-          }
-        >
-          <span className="icon">📦</span>
-          <span className="text">Products</span>
-        </NavLink>
-        <NavLink
-          to="/services"
-          className={({ isActive }) =>
-            isActive ? "Sidebar-link active" : "Sidebar-link"
-          }
-        >
-          <span className="icon">🛠️</span>
-          <span className="text">Services</span>
-        </NavLink>
-        <NavLink
-          to="/news"
-          className={({ isActive }) =>
-            isActive ? "Sidebar-link active" : "Sidebar-link"
-          }
-        >
-          <span className="icon">📰</span>
-          <span className="text">News</span>
-        </NavLink>
-        <NavLink
-          to="/about-us"
-          className={({ isActive }) =>
-            isActive ? "Sidebar-link active" : "Sidebar-link"
-          }
-        >
-          <span className="icon">ℹ️</span>
-          <span className="text">About Us</span>
-        </NavLink>
-        <NavLink
-          to="/contact-us"
-          className={({ isActive }) =>
-            isActive ? "Sidebar-link active" : "Sidebar-link"
-          }
-        >
-          <span className="icon">✉️</span>
-          <span className="text">Contact</span>
-        </NavLink>
+        {navLink("/", "🏠", "Home", true)}
+        {navLink("/products", "📦", "Products")}
+        {navLink("/services", "🛠️", "Services")}
+        {navLink("/news", "📰", "News")}
+        {navLink("/about-us", "ℹ️", "About Us")}
+        {navLink("/contact-us", "✉️", "Contact")}
+
+        <div className="Sidebar-divider" />
+
+        {navLink("/privacy-policy", "🔒", "Privacy Policy")}
+        {navLink("/terms", "📄", "Terms of Service")}
       </nav>
     </div>
   );
