@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import "./Home.css";
 import products from "../../data/products";
-import AdsensePlaceholder from "../Adsense/AdsensePlaceholder";
 
 function Home() {
   const sliderRef = useRef(null);
@@ -37,8 +36,6 @@ function Home() {
           products. Discover top-rated items curated just for you.
         </p>
       </div>
-
-      <AdsensePlaceholder position="home-top" />
 
       <div className="Slider-container">
         <h3>Featured Products</h3>
@@ -84,7 +81,6 @@ function Home() {
         </div>
       </div>
 
-      <AdsensePlaceholder position="home-bottom" />
     </div>
   );
 }

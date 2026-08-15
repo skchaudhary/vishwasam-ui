@@ -1,7 +1,6 @@
 import React from "react";
 import "./News.css";
 import newsArticles from "../../data/news";
-import AdsensePlaceholder from "../Adsense/AdsensePlaceholder";
 
 function News() {
   return (
@@ -10,8 +9,6 @@ function News() {
         <h2>Latest News</h2>
         <p>Updates, announcements, and insights from Bharwaliya.</p>
       </div>
-
-      <AdsensePlaceholder position="news-top" />
 
       <div className="News-list">
         {newsArticles.map((article) => (

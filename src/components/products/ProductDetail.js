@@ -1,7 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import products from "../../data/products";
-import AdsensePlaceholder from "../Adsense/AdsensePlaceholder";
 
 export default function ProductDetail() {
   const { id } = useParams();
@@ -29,8 +28,6 @@ export default function ProductDetail() {
       )}
       <p style={{ fontWeight: 700 }}>{product.price}</p>
       <p>{product.description}</p>
-
-      <AdsensePlaceholder position="product-detail" />
 
       <a
         href={link}

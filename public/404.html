@@ -2,16 +2,29 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Page not found</title>
+    <title>Bharwaliya</title>
     <script>
+      // GitHub Pages SPA redirect trick.
+      // When GitHub Pages returns 404 for a deep path (e.g. /about-us),
+      // this script encodes the path into the query string and redirects
+      // to index.html, which then restores the real URL via history.replaceState.
       (function () {
-        var path = window.location.pathname;
-        var query = window.location.search || '';
-        var hash = window.location.hash || '';
-        var destination = '/#' + path + query + hash;
-        window.location.replace(destination);
+        var l = window.location;
+        l.replace(
+          l.protocol +
+            "//" +
+            l.hostname +
+            (l.port ? ":" + l.port : "") +
+            "/?/" +
+            l.pathname
+              .slice(1)
+              .replace(/&/g, "~and~") +
+            (l.search
+              ? "&" + l.search.slice(1).replace(/&/g, "~and~")
+              : "") +
+            l.hash
+        );
       })();
     </script>
   </head>

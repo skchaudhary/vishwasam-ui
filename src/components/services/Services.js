@@ -1,6 +1,5 @@
 import React from "react";
 import "./Services.css";
-import AdsensePlaceholder from "../Adsense/AdsensePlaceholder";
 
 function Services() {
   const services = [
@@ -19,8 +18,6 @@ function Services() {
         <h2>Our Services</h2>
         <p>Discover what Bharwaliya has to offer.</p>
       </div>
-
-      <AdsensePlaceholder position="services-top" />
 
       <div className="Services-grid">
         {services.map((service) => (

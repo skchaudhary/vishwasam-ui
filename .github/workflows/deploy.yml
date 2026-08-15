@@ -23,23 +23,6 @@ jobs:
         # Use `npm install` to allow installing new dependencies when package-lock.json is out of sync.
         run: npm install --no-audit --no-fund
 
-      - name: Inject Adsense snippet (optional)
-        if: ${{ env.REACT_APP_ADSENSE_ID != '' }}
-        env:
-          REACT_APP_ADSENSE_ID: ${{ secrets.REACT_APP_ADSENSE_ID }}
-        run: |
-          echo "Injecting Adsense ID into public/index.html"
-
-          ADSENSE_SNIPPET=$(cat <<EOF
-          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${REACT_APP_ADSENSE_ID}" crossorigin="anonymous"></script>
-          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-          EOF
-          )
-
-          export ADSENSE_SNIPPET
-
-          perl -0777 -i -pe 'BEGIN { $s = $ENV{"ADSENSE_SNIPPET"} // "" } s/<!-- ADSENSE_SNIPPET_PLACEHOLDER -->.*?<!-- End ADSENSE_SNIPPET_PLACEHOLDER -->/$s/si' public/index.html
-
       - name: Build
         run: npm run build
         env:

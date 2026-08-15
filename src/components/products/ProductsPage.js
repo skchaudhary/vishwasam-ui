@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./ProductsPage.css";
 import products from "../../data/products";
-import AdsensePlaceholder from "../Adsense/AdsensePlaceholder";
 
 function ProductsPage() {
   const [filter, setFilter] = useState("All");
@@ -29,8 +28,6 @@ function ProductsPage() {
           </button>
         ))}
       </div>
-
-      <AdsensePlaceholder position="products-top" />
 
       <div className="Products-grid">
         {filteredProducts.map((product) => (
@@ -66,7 +63,6 @@ function ProductsPage() {
         ))}
       </div>
 
-      <AdsensePlaceholder position="products-bottom" />
     </div>
   );
 }

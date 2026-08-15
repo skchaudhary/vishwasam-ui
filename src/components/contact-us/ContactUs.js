@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./ContactUs.css";
-import AdsensePlaceholder from "../Adsense/AdsensePlaceholder";
 
 function ContactUs() {
   const [formData, setFormData] = useState({
@@ -138,7 +137,6 @@ function ContactUs() {
         </button>
       </form>
 
-      <AdsensePlaceholder position="contact-bottom" />
     </div>
   );
 }

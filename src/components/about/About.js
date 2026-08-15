@@ -1,6 +1,5 @@
 import React from "react";
 import "./About.css";
-import AdsensePlaceholder from "../Adsense/AdsensePlaceholder";
 
 function About() {
   return (
@@ -12,8 +11,6 @@ function About() {
           bringing you the best products online.
         </p>
       </div>
-
-      <AdsensePlaceholder position="about-top" />
 
       <div className="About-content">
         <div className="About-card">
