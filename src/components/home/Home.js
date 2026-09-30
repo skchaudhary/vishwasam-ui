@@ -1,10 +1,12 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Home.css";
 import products from "../../data/products";
+import ImageModal from "../common/ImageModal";
 
 function Home() {
   const sliderRef = useRef(null);
-  const [isPaused, setIsPaused] = React.useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   // Auto-scroll slider
   useEffect(() => {
@@ -13,7 +15,7 @@ function Home() {
     const delay = 30; // ms
 
     const step = () => {
-      if (slider && !isPaused) {
+      if (slider && !isPaused && !selectedProduct) {
         slider.scrollLeft += scrollStep;
         if (slider.scrollLeft >= slider.scrollWidth - slider.clientWidth) {
           slider.scrollLeft = 0;
@@ -23,7 +25,7 @@ function Home() {
 
     const interval = setInterval(step, delay);
     return () => clearInterval(interval);
-  }, [isPaused]);
+  }, [isPaused, selectedProduct]);
 
   const featuredProducts = products.filter((p) => p.featured);
 
@@ -49,13 +51,33 @@ function Home() {
         >
           {featuredProducts.map((product) => (
             <div className="Slide-item" key={product.id}>
-              <img
-                src={product.image}
-                alt={product.title}
-                className="Slide-image"
-              />
+              <div style={{ position: "relative", cursor: "pointer" }} onClick={() => setSelectedProduct(product)}>
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="Slide-image"
+                  title="Click to view all photos"
+                />
+                {product.images && product.images.length > 1 && (
+                  <span
+                    style={{
+                      position: "absolute",
+                      bottom: 8,
+                      right: 8,
+                      background: "rgba(0,0,0,0.7)",
+                      color: "#fff",
+                      fontSize: "11px",
+                      padding: "3px 7px",
+                      borderRadius: "4px",
+                      fontWeight: 600,
+                    }}
+                  >
+                    📷 {product.images.length} photos
+                  </span>
+                )}
+              </div>
               <div className="Slide-content">
-                <h4>{product.title}</h4>
+                <h4 onClick={() => setSelectedProduct(product)} style={{ cursor: "pointer" }}>{product.title}</h4>
                 <p>{product.description}</p>
                 <div className="Slide-price">{product.price}</div>
                 {product.affiliateUrl ? (
@@ -66,7 +88,7 @@ function Home() {
                     className="Buy-button"
                   >
                     Buy on{" "}
-                    {product.affiliateUrl.includes("amazon")
+                    {product.affiliateUrl.includes("amazon") || product.affiliateUrl.includes("amzn")
                       ? "Amazon"
                       : "Flipkart"}
                   </a>
@@ -81,6 +103,12 @@ function Home() {
         </div>
       </div>
 
+      {selectedProduct && (
+        <ImageModal
+          product={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+        />
+      )}
     </div>
   );
 }

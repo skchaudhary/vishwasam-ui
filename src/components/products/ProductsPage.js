@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "./ProductsPage.css";
 import products from "../../data/products";
+import ImageModal from "../common/ImageModal";
 
 function ProductsPage() {
   const [filter, setFilter] = useState("All");
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   const categories = ["All", "Home & Kitchen", "Electronics"];
 
@@ -32,13 +34,33 @@ function ProductsPage() {
       <div className="Products-grid">
         {filteredProducts.map((product) => (
           <div className="Slide-item" key={product.id}>
-            <img
-              src={product.image}
-              alt={product.title}
-              className="Slide-image"
-            />
+            <div style={{ position: "relative", cursor: "pointer" }} onClick={() => setSelectedProduct(product)}>
+              <img
+                src={product.image}
+                alt={product.title}
+                className="Slide-image"
+                title="Click to view all photos"
+              />
+              {product.images && product.images.length > 1 && (
+                <span
+                  style={{
+                    position: "absolute",
+                    bottom: 8,
+                    right: 8,
+                    background: "rgba(0,0,0,0.7)",
+                    color: "#fff",
+                    fontSize: "11px",
+                    padding: "3px 7px",
+                    borderRadius: "4px",
+                    fontWeight: 600,
+                  }}
+                >
+                  📷 {product.images.length} photos
+                </span>
+              )}
+            </div>
             <div className="Slide-content">
-              <h4>{product.title}</h4>
+              <h4 onClick={() => setSelectedProduct(product)} style={{ cursor: "pointer" }}>{product.title}</h4>
               <p>{product.description}</p>
               <div className="Slide-price">{product.price}</div>
               {product.affiliateUrl ? (
@@ -49,7 +71,7 @@ function ProductsPage() {
                   className="Buy-button"
                 >
                   Buy on{" "}
-                  {product.affiliateUrl.includes("amazon")
+                  {product.affiliateUrl.includes("amazon") || product.affiliateUrl.includes("amzn")
                     ? "Amazon"
                     : "Flipkart"}
                 </a>
@@ -63,6 +85,12 @@ function ProductsPage() {
         ))}
       </div>
 
+      {selectedProduct && (
+        <ImageModal
+          product={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+        />
+      )}
     </div>
   );
 }

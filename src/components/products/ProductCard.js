@@ -20,7 +20,11 @@ export default function ProductCard({ product }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          {isAffiliate ? "View on seller site" : "View details"}
+          {isAffiliate
+            ? link.includes("amazon") || link.includes("amzn")
+              ? "Buy on Amazon"
+              : "View on seller site"
+            : "View details"}
         </a>
       </div>
     </div>
