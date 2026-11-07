@@ -26,7 +26,6 @@ export default function ProductVariantSelector({ product, selectedVariantId, onV
               className={`Product-variant-swatch Product-variant-swatch--${variant.id}`}
               aria-hidden="true"
             />
-            <span>{variant.name}</span>
           </button>
         ))}
       </div>
