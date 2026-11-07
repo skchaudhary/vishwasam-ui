@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
-import "./Home.css";
-import products from "../../data/products";
-import ImageModal from "../common/ImageModal";
+import React, { useState, useEffect, useRef } from 'react';
+import './Home.css';
+import products from '../../data/products';
+import ImageModal from '../common/ImageModal';
 
 function Home() {
   const sliderRef = useRef(null);
@@ -34,8 +34,8 @@ function Home() {
       <div className="Hero">
         <h2>Welcome to Bharwaliya</h2>
         <p>
-          Your one-stop destination for premium home, kitchen, and electronic
-          products. Discover top-rated items curated just for you.
+          Your one-stop destination for premium home, kitchen, and electronic products. Discover
+          top-rated items curated just for you.
         </p>
       </div>
 
@@ -51,7 +51,10 @@ function Home() {
         >
           {featuredProducts.map((product) => (
             <div className="Slide-item" key={product.id}>
-              <div style={{ position: "relative", cursor: "pointer" }} onClick={() => setSelectedProduct(product)}>
+              <div
+                style={{ position: 'relative', cursor: 'pointer' }}
+                onClick={() => setSelectedProduct(product)}
+              >
                 <img
                   src={product.image}
                   alt={product.title}
@@ -61,14 +64,14 @@ function Home() {
                 {product.images && product.images.length > 1 && (
                   <span
                     style={{
-                      position: "absolute",
+                      position: 'absolute',
                       bottom: 8,
                       right: 8,
-                      background: "rgba(0,0,0,0.7)",
-                      color: "#fff",
-                      fontSize: "11px",
-                      padding: "3px 7px",
-                      borderRadius: "4px",
+                      background: 'rgba(0,0,0,0.7)',
+                      color: '#fff',
+                      fontSize: '11px',
+                      padding: '3px 7px',
+                      borderRadius: '4px',
                       fontWeight: 600,
                     }}
                   >
@@ -77,7 +80,9 @@ function Home() {
                 )}
               </div>
               <div className="Slide-content">
-                <h4 onClick={() => setSelectedProduct(product)} style={{ cursor: "pointer" }}>{product.title}</h4>
+                <h4 onClick={() => setSelectedProduct(product)} style={{ cursor: 'pointer' }}>
+                  {product.title}
+                </h4>
                 <p>{product.description}</p>
                 <div className="Slide-price">{product.price}</div>
                 {product.affiliateUrl ? (
@@ -87,10 +92,11 @@ function Home() {
                     rel="noopener noreferrer"
                     className="Buy-button"
                   >
-                    Buy on{" "}
-                    {product.affiliateUrl.includes("amazon") || product.affiliateUrl.includes("amzn")
-                      ? "Amazon"
-                      : "Flipkart"}
+                    Buy on{' '}
+                    {product.affiliateUrl.includes('amazon') ||
+                    product.affiliateUrl.includes('amzn')
+                      ? 'Amazon'
+                      : 'Flipkart'}
                   </a>
                 ) : (
                   <a href={product.url} className="Buy-button">
@@ -104,10 +110,7 @@ function Home() {
       </div>
 
       {selectedProduct && (
-        <ImageModal
-          product={selectedProduct}
-          onClose={() => setSelectedProduct(null)}
-        />
+        <ImageModal product={selectedProduct} onClose={() => setSelectedProduct(null)} />
       )}
     </div>
   );

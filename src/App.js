@@ -1,15 +1,15 @@
-import "./App.css";
-import { Routes, Route, Link } from "react-router-dom";
-import Sidebar from "./components/Menu/Sidebar";
-import Home from "./components/home/Home";
-import ProductsPage from "./components/products/ProductsPage";
-import ProductDetail from "./components/products/ProductDetail";
-import Services from "./components/services/Services";
-import News from "./components/news/News";
-import About from "./components/about/About";
-import ContactUs from "./components/contact-us/ContactUs";
-import PrivacyPolicy from "./components/privacy/PrivacyPolicy";
-import Terms from "./components/terms/Terms";
+import './App.css';
+import { Routes, Route, Link } from 'react-router-dom';
+import Sidebar from './components/Menu/Sidebar';
+import Home from './components/home/Home';
+import ProductsPage from './components/products/ProductsPage';
+import ProductDetail from './components/products/ProductDetail';
+import Services from './components/services/Services';
+import News from './components/news/News';
+import About from './components/about/About';
+import ContactUs from './components/contact-us/ContactUs';
+import PrivacyPolicy from './components/privacy/PrivacyPolicy';
+import Terms from './components/terms/Terms';
 
 function App() {
   return (

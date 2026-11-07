@@ -15,8 +15,12 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .ImageModal-content {
@@ -48,7 +52,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s, transform 0.15s;
+  transition:
+    background 0.2s,
+    transform 0.15s;
 }
 
 .ImageModal-close:hover {
@@ -124,7 +130,9 @@
   align-items: center;
   justify-content: center;
   z-index: 5;
-  transition: background 0.2s, transform 0.15s;
+  transition:
+    background 0.2s,
+    transform 0.15s;
 }
 
 .ImageModal-nav:hover {
@@ -159,7 +167,10 @@
   cursor: pointer;
   border: 2px solid transparent;
   opacity: 0.65;
-  transition: border-color 0.2s, opacity 0.2s, transform 0.15s;
+  transition:
+    border-color 0.2s,
+    opacity 0.2s,
+    transform 0.15s;
   flex-shrink: 0;
 }
 
@@ -211,7 +222,9 @@
   font-size: 0.95rem;
   white-space: nowrap;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  transition: background-color 0.2s, transform 0.15s;
+  transition:
+    background-color 0.2s,
+    transform 0.15s;
 }
 
 .ImageModal-buy-btn:hover {

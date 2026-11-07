@@ -1,12 +1,13 @@
-import React, { useState, useEffect, useCallback } from "react";
-import "./ImageModal.css";
+import React, { useState, useEffect, useCallback } from 'react';
+import './ImageModal.css';
 
 function ImageModal({ product, initialIndex = 0, onClose }) {
-  const images = product?.images && product.images.length > 0
-    ? product.images
-    : product?.image
-    ? [product.image]
-    : [];
+  const images =
+    product?.images && product.images.length > 0
+      ? product.images
+      : product?.image
+        ? [product.image]
+        : [];
 
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
 
@@ -20,17 +21,18 @@ function ImageModal({ product, initialIndex = 0, onClose }) {
 
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === "Escape") onClose();
-      if (e.key === "ArrowLeft") handlePrev();
-      if (e.key === "ArrowRight") handleNext();
+      if (e.key === 'Escape') onClose();
+      if (e.key === 'ArrowLeft') handlePrev();
+      if (e.key === 'ArrowRight') handleNext();
     };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onClose, handlePrev, handleNext]);
 
   if (!product || images.length === 0) return null;
 
   const currentImage = images[currentIndex];
+  const displayTitle = product.name ? `${product.title} - ${product.name}` : product.title;
 
   return (
     <div className="ImageModal-backdrop" onClick={onClose}>
@@ -40,7 +42,7 @@ function ImageModal({ product, initialIndex = 0, onClose }) {
         </button>
 
         <div className="ImageModal-header">
-          <h3>{product.title}</h3>
+          <h3>{displayTitle}</h3>
           <span className="ImageModal-counter">
             {currentIndex + 1} / {images.length}
           </span>
@@ -48,13 +50,17 @@ function ImageModal({ product, initialIndex = 0, onClose }) {
 
         <div className="ImageModal-viewer">
           {images.length > 1 && (
-            <button className="ImageModal-nav prev" onClick={handlePrev} aria-label="Previous image">
+            <button
+              className="ImageModal-nav prev"
+              onClick={handlePrev}
+              aria-label="Previous image"
+            >
               ‹
             </button>
           )}
 
           <div className="ImageModal-stage">
-            <img src={currentImage} alt={`${product.title} slide ${currentIndex + 1}`} />
+            <img src={currentImage} alt={`${displayTitle} slide ${currentIndex + 1}`} />
           </div>
 
           {images.length > 1 && (
@@ -71,7 +77,7 @@ function ImageModal({ product, initialIndex = 0, onClose }) {
                 key={idx}
                 src={img}
                 alt={`Thumbnail ${idx + 1}`}
-                className={`ImageModal-thumb ${idx === currentIndex ? "active" : ""}`}
+                className={`ImageModal-thumb ${idx === currentIndex ? 'active' : ''}`}
                 onClick={() => setCurrentIndex(idx)}
               />
             ))}
@@ -90,10 +96,10 @@ function ImageModal({ product, initialIndex = 0, onClose }) {
               rel="noopener noreferrer"
               className="ImageModal-buy-btn"
             >
-              Buy on{" "}
-              {product.affiliateUrl.includes("amazon") || product.affiliateUrl.includes("amzn")
-                ? "Amazon"
-                : "Seller Site"}
+              Buy on{' '}
+              {product.affiliateUrl.includes('amazon') || product.affiliateUrl.includes('amzn')
+                ? 'Amazon'
+                : 'Seller Site'}
             </a>
           )}
         </div>

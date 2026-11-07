@@ -1,0 +1,62 @@
+.Product-variant-selector {
+  margin: 0.75rem 0;
+}
+
+.Product-variant-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.Product-variant-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.Product-variant-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: var(--card-bg);
+  color: var(--text-main);
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+
+.Product-variant-option.active {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 1px var(--primary-color);
+}
+
+.Product-variant-swatch {
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 50%;
+}
+
+.Product-variant-swatch--clear-transparent {
+  background: linear-gradient(135deg, #fff 45%, #d7e4ea 46%);
+}
+
+.Product-variant-swatch--gray-transparent {
+  background: #8d9297;
+}
+
+.Product-variant-swatch--pink-transparent {
+  background: #e7a5b9;
+}
+
+.Product-variant-swatch--teal-transparent {
+  background: #3ba5a4;
+}
+
+.Product-variant-swatch--black {
+  background: #171717;
+}

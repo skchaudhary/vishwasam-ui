@@ -1,13 +1,13 @@
-import React from "react";
-import "./Services.css";
+import React from 'react';
+import './Services.css';
 
 function Services() {
   const services = [
     {
       id: 1,
-      title: "E-Commerce Retail",
+      title: 'E-Commerce Retail',
       description:
-        "We offer a wide selection of premium quality products across categories like Home & Kitchen and Electronics. Our priority is delivering excellence straight to your doorstep.",
+        'We offer a wide selection of premium quality products across categories like Home & Kitchen and Electronics. Our priority is delivering excellence straight to your doorstep.',
     },
     // More services can be added here in the future
   ];

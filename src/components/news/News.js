@@ -1,6 +1,6 @@
-import React from "react";
-import "./News.css";
-import newsArticles from "../../data/news";
+import React from 'react';
+import './News.css';
+import newsArticles from '../../data/news';
 
 function News() {
   return (
